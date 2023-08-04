@@ -127,8 +127,7 @@ module "server_template_9" {                                   # <<-- Change to 
 # The Pools for the az must be created before this domain fabric module executes
   depends_on = [
     module.imm_az_pools_mod, module.imm_az_user_policy_1,
-    module.imm_az_qos_mod, module.imm_domain_1,
-    module.imm_az_vsan_policy_1
+    module.imm_az_qos_mod, module.imm_az_vsan_policy_1
   ]
 
 }
