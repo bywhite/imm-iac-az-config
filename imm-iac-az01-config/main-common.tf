@@ -147,7 +147,7 @@ module "imm_az_pools_mod" {
   organization    = local.org_moid
   policy_prefix = var.az_policy_prefix
   az_id = var.az_id                   # used to create unique identity Pools: MAC, WWNN, WWPN
-  description   = var.az_description       # Using generic az description
+  description   = "Pools for AZ"      # Using generic az description
 
 # Server Inband IP Pool values for Server IMC
   ip_size     = "18"
