@@ -11,7 +11,7 @@
 
 
 module "server_template_vmw01" {                                   # <<-- Change to duplicate
-  source = "github.com/bywhite/imm-iac-az-mods//imm-srv-template-mod"  #?ref=v0.0.1"
+  source = "github.com/bywhite/imm-iac-az-mods//imm-srvt-abstract-mod"  #?ref=v0.0.1"
             # remote module name above should not be changed when duplicating
 
 # =============================================================================
@@ -42,7 +42,7 @@ module "server_template_vmw01" {                                   # <<-- Change
 # Customize policies for X-Series (true) or B-Series (false)
   is_x_series_profile = true 
   spt_type = "vmw1"
-  boot_policy = module.server_policies.boot_precision_policy_map["boot-1"]
+  boot_policy = module.server_policies.boot_policy_map["boot-1"]
 
 # =============================================================================
 # az-wide pools
