@@ -41,6 +41,7 @@ module "server_template_vmw01" {                                   # <<-- Change
 # -----------------------------------------------------------------------------
 # Customize policies for X-Series (true) or B-Series (false)
   is_x_series_profile = true 
+  spt_type = "vmw1"
 
 # =============================================================================
 # az-wide pools
