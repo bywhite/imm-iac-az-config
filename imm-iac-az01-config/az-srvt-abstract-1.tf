@@ -76,7 +76,7 @@ module "server_template_abstract_1" {                                   # <<-- C
 # Local IMC Users - defined az wide
 # -----------------------------------------------------------------------------
   # Sets local users and their permissions and passwords
-  user_policy  = local.iam_user_policy_moid
+  user_policy  = module.imm_az_user_policy_1.iam_user_policy_moid
 
 # =============================================================================
 # Server Eth vNic's & FC vHBA's

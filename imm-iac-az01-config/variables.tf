@@ -63,7 +63,9 @@ variable "az_description" {
 
 variable "imc_admin_password" {
     type    = string
+    default = "password"
 }
 variable "snmp_password" {
     type    = string
+    default = "password"
 }

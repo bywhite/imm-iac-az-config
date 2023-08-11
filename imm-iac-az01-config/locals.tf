@@ -31,10 +31,6 @@ locals {
 # az VLANS assigned to all FI Switches in the az
 # az_vlans = "100,101,200-599,997-999,1200-1250"   # Set by var input
 
-# az CIMC User Policy for Server KVM Access
-  iam_user_policy_moid = module.imm_az_user_policy_1.iam_user_policy_moid
-
-
 # VNIC QoS policy moids az-Wide
   vnic_qos_besteffort = module.imm_az_qos_mod.vnic_qos_besteffort_moid
   vnic_qos_bronze     = module.imm_az_qos_mod.vnic_qos_bronze_moid

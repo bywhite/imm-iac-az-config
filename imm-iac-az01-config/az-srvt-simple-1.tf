@@ -118,7 +118,7 @@ module "server_template_simple_1" {                                   # <<-- Cha
 # Local IMC Users - defined az wide
 # -----------------------------------------------------------------------------
   # Sets local users and their permissions and passwords
-  user_policy_moid          = local.iam_user_policy_moid
+  user_policy_moid          = module.imm_az_user_policy_1.iam_user_policy_moid
   imc_access_vlan           = 21
   server_imc_admin_password = "C1sc0123!"  #Recommend adding var to TFCB Workspace
 
