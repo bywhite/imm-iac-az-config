@@ -58,7 +58,18 @@ module "server_policies" {
 # -----------------------------------------------------------------------------
 
   imc_access_vlan           = 21
+
+# =============================================================================
+# AZ Server Pools
+# -----------------------------------------------------------------------------
+
+  mac_pool_moid         = module.imm_az_pools_mod.mac_pool_moid
   imc_ip_pool_moid      = module.imm_az_pools_mod.ip_pool_moid
+  wwnn_pool_moid        = module.imm_az_pools_mod.wwnn_pool_moid
+  wwpn_pool_a_moid      = module.imm_az_pools_mod.wwpn_pool_a_moid
+  wwpn_pool_b_moid      = module.imm_az_pools_mod.wwpn_pool_b_moid
+  server_uuid_pool_moid = module.imm_az_pools_mod.uuid_pool_moid
+  server_uuid_pool_name = module.imm_az_pools_mod.uuid_pool_name
 
 # =============================================================================
 # SNMP policy
