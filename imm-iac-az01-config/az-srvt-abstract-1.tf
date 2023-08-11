@@ -68,7 +68,7 @@ module "server_template_abstract_1" {                                   # <<-- C
   power_policy      = module.server_policies.power_policy_map["power-3"]
   snmp_policy       = module.server_policies.snmp_policy_map["snmp-1"]
   sol_policy        = module.server_policies.sol_policy_map["sol-1"]
-  stor_policy       = module.server_policies.stor_policy_map["stor-1"]
+  stor_policy       = module.server_policies.stor_policy_map["stor-2"]
   syslog_policy     = module.server_policies.syslog_policy_map["syslog-1"]
   vmedia_policy     = module.server_policies.vmedia_policy_map["vmedia-1"]
 
