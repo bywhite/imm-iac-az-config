@@ -41,8 +41,7 @@ module "server_template_abstract_1" {                                   # <<-- C
 # -----------------------------------------------------------------------------
 # Customize policies for X-Series (true) or B-Series (false)
   is_x_series_profile = true 
-  spt_type = "vmw1"
-  boot_policy = module.server_policies.boot_policy_map["boot-1"]
+
 
 # =============================================================================
 # az-wide pools
@@ -55,6 +54,29 @@ module "server_template_abstract_1" {                                   # <<-- C
   wwpn_pool_b_moid      = module.imm_az_pools_mod.wwpn_pool_b_moid
   server_uuid_pool_moid = module.imm_az_pools_mod.uuid_pool_moid
   server_uuid_pool_name = module.imm_az_pools_mod.uuid_pool_name
+
+
+# =============================================================================
+# az-wide server policies
+# -----------------------------------------------------------------------------
+
+  access_policy     = module.server_policies.access_policy_map["access-1"]
+  bios_policy       = module.server_policies.bios_policy_map["bios-1"]
+  boot_policy       = module.server_policies.boot_policy_map["boot-1"]
+  ipmi_policy       = module.server_policies.ipmi_policy_map["ipmi-1"]
+  kvm_policy        = module.server_policies.kvm_policy_map["kvm-1"]
+  power_policy      = module.server_policies.power_policy_map["power-3"]
+  snmp_policy       = module.server_policies.snmp_policy_map["snmp-1"]
+  sol_policy        = module.server_policies.sol_policy_map["sol-1"]
+  stor_policy       = module.server_policies.stor_policy_map["stor-1"]
+  syslog_policy     = module.server_policies.syslog_policy_map["syslog-1"]
+  vmedia_policy     = module.server_policies.vmedia_policy_map["vmedia-1"]
+
+# =============================================================================
+# Local IMC Users - defined az wide
+# -----------------------------------------------------------------------------
+  # Sets local users and their permissions and passwords
+  user_policy  = local.iam_user_policy_moid
 
 # =============================================================================
 # Server Eth vNic's & FC vHBA's
@@ -70,6 +92,10 @@ module "server_template_abstract_1" {                                   # <<-- C
       switch_id   = "A"
       pci_order   = 0
       qos_moid    = module.imm_az_qos_mod.vnic_qos_besteffort_moid
+      adapter     = module.server_policies.adapter_policy_map["adapter-1"]
+      failover    = false
+      netgroup    = module.server_policies.netgroup_policy_map["netgroup-1"]
+      netcontrol  = module.server_policies.netcontrol_policy_map["netcontrol-1"]
     }
     "eth1"  = {
       vnic_name   = "eth1"
@@ -78,6 +104,10 @@ module "server_template_abstract_1" {                                   # <<-- C
       switch_id   = "B"
       pci_order   = 1
       qos_moid    = module.imm_az_qos_mod.vnic_qos_besteffort_moid
+      adapter     = module.server_policies.adapter_policy_map["adapter-1"]
+      failover    = false
+      netgroup    = module.server_policies.netgroup_policy_map["netgroup-1"]
+      netcontrol  = module.server_policies.netcontrol_policy_map["netcontrol-1"]
     }
   }
 
@@ -90,6 +120,7 @@ module "server_template_abstract_1" {                                   # <<-- C
       wwpn_pool_moid = module.imm_az_pools_mod.wwpn_pool_a_moid
       pci_order      = 2
       qos_moid       = module.imm_az_qos_mod.vnic_qos_fc_moid
+      fcadapter      = module.server_policies.fcadapter_policy_map["fcadapter-1"]
     }
     "fc1"  = {
       vhba_name      = "fc1"
@@ -98,30 +129,9 @@ module "server_template_abstract_1" {                                   # <<-- C
       wwpn_pool_moid = module.imm_az_pools_mod.wwpn_pool_b_moid
       pci_order      = 3
       qos_moid       = module.imm_az_qos_mod.vnic_qos_fc_moid
+      fcadapter      = module.server_policies.fcadapter_policy_map["fcadapter-1"]
     }
   }
-
- 
-# =============================================================================
-# Server monitoring configurations
-# -----------------------------------------------------------------------------
-# All values could be set with Local's or Variables
-
- # SNMP
-  snmp_ip       = "10.10.10.10"
-  snmp_password = "Cisco123"              #Recommend adding var to TFCB Workspace
-  
-  # SysLog 
-  syslog_remote_ip = "10.10.10.10"
-
-# =============================================================================
-# Local IMC Users - defined az wide
-# -----------------------------------------------------------------------------
-  # Sets local users and their permissions and passwords
-  user_policy_moid          = local.iam_user_policy_moid
-  imc_access_vlan           = 21
-  server_imc_admin_password = "C1sc0123!"  #Recommend adding var to TFCB Workspace
-
 
 # =============================================================================
 # Dependencies
