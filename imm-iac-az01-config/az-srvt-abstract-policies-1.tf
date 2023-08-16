@@ -59,7 +59,7 @@ module "server_template_abstract_1" {                                   # <<-- C
   access_policy     = module.server_policies.access_policy_map["access-1"]
   bios_policy       = module.server_policies.bios_policy_map["bios-1"]
   boot_policy       = module.server_policies.boot_policy_map["boot-1"]
-  ipmi_policy       = "none"   # module.server_policies.ipmi_policy_map["ipmi-1"]
+  ipmi_policy       = module.server_policies.ipmi_policy_map["ipmi-1"]
   kvm_policy        = module.server_policies.kvm_policy_map["kvm-1"]
   power_policy      = module.server_policies.power_policy_map["power-3"]
   snmp_policy       = "none"   # module.server_policies.snmp_policy_map["snmp-1"]
