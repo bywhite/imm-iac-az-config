@@ -51,7 +51,6 @@ module "server_template_abstract_1" {                                   # <<-- C
   wwpn_pool_a_moid      = module.imm_az_pools_mod.wwpn_pool_a_moid
   wwpn_pool_b_moid      = module.imm_az_pools_mod.wwpn_pool_b_moid
   server_uuid_pool_moid = module.imm_az_pools_mod.uuid_pool_moid
-  server_uuid_pool_name = module.imm_az_pools_mod.uuid_pool_name
 
 # =============================================================================
 # az-wide server policies
