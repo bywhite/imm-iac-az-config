@@ -1,7 +1,8 @@
 # =============================================================================
 # Each UCS Domain Infrastructure is defined by its own file and module call.
 # Each Server Profile Template is defined by its own file and module call.
-# The Server Profile Templates rely upon common shared policies below.  
+# The Server Profile Templates rely upon common shared policies below or 
+# dedicated policies created at the same time as the template.  
 
 # COMMON objects shared throughout az for consistent configurations:
 #   - IMC Local User Policies                   (module imm_az_user_policy_1)
