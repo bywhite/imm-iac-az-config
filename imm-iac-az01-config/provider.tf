@@ -27,6 +27,7 @@ terraform {
     }
 }
 
+# ID's and Passwords are stored securely in Terraform Cloud
 provider "intersight" {
     apikey = var.apikey
     secretkey = var.secretkey

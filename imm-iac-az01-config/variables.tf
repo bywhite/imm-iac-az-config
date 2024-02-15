@@ -34,7 +34,7 @@ variable "endpoint" {
 variable "organization" {
     description = "Intersight Organization target for object creation"
     type        = string
-    default     = "imm-iac-az"
+    default     = "default"
 }
 
 variable "az_policy_prefix" {
