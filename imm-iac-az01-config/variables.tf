@@ -69,3 +69,13 @@ variable "snmp_password" {
     type    = string
     default = "password"
 }
+
+variable "az_tags" {
+  type        = list(map(string))
+  description = "user tags to be applied to all policies"
+  default     = [
+    { "key" : "environment", "value" : "dev" },
+    { "key" : "orchestrator", "value" : "Terraform" },
+    { "key" : "az", "value" : "az01" },
+  ]
+}

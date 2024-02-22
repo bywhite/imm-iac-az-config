@@ -38,6 +38,28 @@ locals {
   vnic_qos_gold       = module.imm_az_qos_mod.vnic_qos_gold_moid
   # vnic_qos_platinum = module.imm_az_qos_mod.vnic_qos_platinum_moid
   vnic_qos_fc_moid    = module.imm_az_qos_mod.vnic_qos_fc_moid
-  
+
+
+# This secton create a list of VLAN-Name:VLAN-Number pairs from list of allowed vlans 
+  # var.az_vlans      # Example: "2-100,105,110,115 >> {"vlan-2": 2, "vlan-3": 3, ...}"
+  # az_vlans = var.az_vlans
+  az_vlans = "100,101,200-599,997-999,1200-1250"
+  vlan_split = length(regexall("-", local.az_vlans)) > 0 ? tolist(
+    split(",", local.az_vlans)
+  ) : tolist(local.az_vlans)
+  vlan_lists = [for s in local.vlan_split : length(regexall("-", s)) > 0 ? [
+    for v in range(
+      tonumber(element(split("-", s), 0)),
+      (tonumber(element(split("-", s), 1)
+    ) + 1)) : tonumber(v)] : [s]
+  ]
+
+  # Flatten the list of lists generated above into a single simple list
+  flattened_vlan_list = flatten(local.vlan_lists)
+
+  # Convert the list above into a set so it can be used by for_each
+  vlan_list_set       = toset(local.flattened_vlan_list)
+  # ---------------------------------------------------------------------------
+
   
 }
