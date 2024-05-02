@@ -10,7 +10,7 @@
 # # -----------------------------------------------------------------------------
 
 
-module "server_template_9" {                                   # <<-- Change to duplicate
+module "server_template_9" {                                   # <<-- Change when duplicating
   source = "github.com/bywhite/imm-iac-az-mods//imm-srv-template-mod"  #?ref=v1.2.5"
             # remote module name above should not be changed when duplicating
 
@@ -25,7 +25,7 @@ module "server_template_9" {                                   # <<-- Change to 
 # -----------------------------------------------------------------------------
 
   # prefix for all created policies
-  server_policy_prefix = "${local.az_policy_prefix}-vmw09"         # <<-- Change to duplicate
+  server_policy_prefix = "${local.az_policy_prefix}-vmw09"         # <<-- Change when duplicating
   description   = "built by Terraform ${local.az_policy_prefix}"
 
   #Every object created in the domain will have these tags
@@ -33,7 +33,7 @@ module "server_template_9" {                                   # <<-- Change to 
     { "key" : "environment", "value" : "dev" },
     { "key" : "orchestrator", "value" : "Terraform" },
     { "key" : "az", "value" : "${local.az_policy_prefix}" },
-    { "key" : "ServerGroup", "value" : "${local.az_policy_prefix}-vmw09" } # <-- Change to duplicate
+    { "key" : "ServerGroup", "value" : "${local.az_policy_prefix}-vmw09" } # <-- Change when duplicating
   ]
 
 # =============================================================================
