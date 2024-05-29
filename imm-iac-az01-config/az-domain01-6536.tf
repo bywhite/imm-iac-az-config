@@ -45,7 +45,7 @@ module "imm_domain_01" {                                                        
 # Fabric Interconnect 6536 Ethernet ports
 # -----------------------------------------------------------------------------
  # Uplink VLANs Allowed List    Example alternative: "5,6,7,8,100-130,998-1011"   OR  = var.az_vlans
-  switch_vlans_6536 = "100,101,200-599,997-999,1200-1250"
+  switch_vlans_6536 = "100,101,200-211,500-510"
 
   #FI ports to be used for ethernet port channel uplink
   # port_channel_6536 = [31, 32, 33, 34]
